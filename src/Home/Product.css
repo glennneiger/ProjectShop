@@ -1,0 +1,17 @@
+.Product {
+    border: 1px solid rgb(150, 150, 150);
+    text-align: center;
+}
+.Product__text div:nth-child(2) span {
+    color:#febf01;
+}
+
+
+.Product__text div:nth-child(3) span {
+    color:#ed1c24;
+    font-weight: bold;
+}
+.Product__text div:nth-child(3) span:nth-child(2) {
+    color:#959595;
+    text-decoration: line-through;
+}
