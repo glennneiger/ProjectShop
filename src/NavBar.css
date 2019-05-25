@@ -1,0 +1,32 @@
+
+.NavBar {
+  background: #3FB871;
+}
+
+.NavBar ul {
+  width:1140px;
+  display:flex;
+  list-style-type: none;
+  padding: 0;
+  overflow: hidden;
+  background-color: #3FB871;
+  margin: auto;
+  justify-content: left;   
+
+  }
+  .NavBar li  {
+     cursor: pointer;
+    display: inline-block;
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  .NavBar li:first-child  {
+    padding-left: 0;
+  }
+  .NavBar li a {
+      font-size: 14px;
+      font-family: Arial, Helvetica, sans-serif;
+      text-decoration: none;
+      color: white;
+  }
