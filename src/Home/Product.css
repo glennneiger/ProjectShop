@@ -2,16 +2,25 @@
     border: 1px solid rgb(150, 150, 150);
     text-align: center;
 }
+
+
+ .Product__text div:first-child {
+    padding: 20px 0px 15px 0px;
+}
+ .Product__text div:nth-child(2) {
+    padding-bottom:20px;
+}
 .Product__text div:nth-child(2) span {
     color:#febf01;
 }
-
-
 .Product__text div:nth-child(3) span {
     color:#ed1c24;
     font-weight: bold;
 }
 .Product__text div:nth-child(3) span:nth-child(2) {
-    color:#959595;
+    color:#b4b4b4;
     text-decoration: line-through;
+    font-size: 12px;
+    font-weight: 500;
+    padding-left:12px;
 }

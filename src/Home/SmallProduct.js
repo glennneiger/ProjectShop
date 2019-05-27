@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import './Product.css';
+import './SmallProduct.css';
 import image1 from './spx2-4.png'
-class Product extends Component {
-
+class SmallProduct extends Component {
 render() {
     const data = this.props.info;
     var image,name,price;
@@ -11,13 +10,13 @@ render() {
          name=data.name;
          price=data.price;
     }
-
     return (
-        <div className={`Product ${this.props.box}`}>
-            <div className="Product__img"> 
-                <img src={image}></img>
+        <div className={`SmallProduct`}>
+            <div className="smallContainer">
+            <div className="smallContainer__img">
+                <img src={image}/>
             </div>
-            <div className="Product__text">
+            <div className="smallContainer__text">
                 <div>
                     <span> {name}
                     </span>
@@ -33,11 +32,11 @@ render() {
                 </div>
                 <div>
                     <span>{price}</span> 
-                    <span>550 000 đ</span>
                 </div>
+            </div> 
             </div>
         </div>
     )
 }
 }
-export default Product
+export default SmallProduct

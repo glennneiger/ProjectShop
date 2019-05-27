@@ -11,6 +11,8 @@ class ResultViewList extends React.Component {
         });
         return (
             <div className="resultViewList">
+                            <button onClick={()=>console.log(this.props.todoList1[0].name)}>ABC</button>
+
                 {listData}
             </div>
         );
