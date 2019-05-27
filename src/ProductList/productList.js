@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import { connect } from 'react-redux';
-import { fetchProducts } from '../actions'
+import { fetchProducts, filterColor, filterSpecies, sort } from '../actions';
 import heading from './heading.png';
 import './productList.css';
 import ResultViewGrid from './resultView/resultViewGrid';
@@ -23,13 +23,13 @@ class ProductList extends React.Component {
                         </p>
                                 <hr className="block_title-hr"></hr>
                                 <div>
-                                    <div className="filter_item"> Cây chậu treo </div>
-                                    <div className="filter_item"> Cây cỏ hoa </div>
-                                    <div className="filter_item"> Cây dây leo </div>
-                                    <div className="filter_item"> Cây để bàn </div>
-                                    <div className="filter_item"> Cây may mắn </div>
-                                    <div className="filter_item"> Cây trang trí </div>
-                                    <div className="filter_item"> Cây nội thất </div>
+                                    <div className="filter_item" onClick={ () => this.props.filterSpecies("chautreo")} > Cây chậu treo </div>
+                                    <div className="filter_item" onClick={ () => this.props.filterSpecies("cohoa")} > Cây cỏ hoa </div>
+                                    <div className="filter_item" onClick={ () => this.props.filterSpecies("dayleo")} > Cây dây leo </div>
+                                    <div className="filter_item" onClick={ () => this.props.filterSpecies("deban")} > Cây để bàn </div>
+                                    <div className="filter_item" onClick={ () => this.props.filterSpecies("mayman")} > Cây may mắn </div>
+                                    <div className="filter_item" onClick={ () => this.props.filterSpecies("trangtri")} > Cây trang trí </div>
+                                    <div className="filter_item" onClick={ () => this.props.filterSpecies("noithat")} > Cây nội thất </div>
                                 </div>
                             </div>
                             <div className="filterPrice">
@@ -47,16 +47,16 @@ class ProductList extends React.Component {
                             </div>
                             <div className="filterColor">
                                 <p className="block_title">
-                                    Tìm theo giá
+                                    Tìm theo màu
                         </p>
                                 <hr className="block_title-hr"></hr>
                                 <div>
-                                    <div className="filter_item"> Xanh cây </div>
-                                    <div className="filter_item"> Đỏ cam </div>
-                                    <div className="filter_item"> Tím </div>
-                                    <div className="filter_item"> Xanh trời </div>
-                                    <div className="filter_item"> Vàng </div>
-                                    <div className="filter_item"> Hồng </div>
+                                    <div className="filter_item" onClick={() => this.props.filtercolor("#98cb4a")} > Xanh cây </div>
+                                    <div className="filter_item" onClick={() => this.props.filtercolor("#f76d3c")} > Đỏ cam </div>
+                                    <div className="filter_item" onClick={() => this.props.filtercolor("#913ccd")} > Tím </div>
+                                    <div className="filter_item" onClick={() => this.props.filtercolor("#5481e6")} > Xanh trời </div>
+                                    <div className="filter_item" onClick={() => this.props.filtercolor("#f7d842")} > Vàng </div>
+                                    <div className="filter_item" onClick={() => this.props.filtercolor("#f15f74")} > Hồng </div>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +78,7 @@ class ProductList extends React.Component {
                                     <div>
                                         <div className="sort_product">
                                             <span>Sắp xếp theo</span>
-                                            <select>
+                                            <select onChange={ event => this.props.sortProduct(event.target.value)}>
                                                 <option value="name"> Tên sản phẩm </option>
                                                 <option value="price"> Giá sản phẩm </option>
                                             </select>
@@ -119,7 +119,10 @@ class ProductList extends React.Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchProducts: () => dispatch(fetchProducts())
+        fetchProducts: () => dispatch(fetchProducts()),
+        filtercolor: (color) => dispatch(filterColor(color)),
+        filterSpecies: (species) => dispatch(filterSpecies(species)),
+        sortProduct: (data) => dispatch(sort(data))
     }
 }
 
