@@ -1,14 +1,14 @@
-const stateDefault = [
-];
-export default function reducer(state = stateDefault, action) {
-    switch (action.type) {
-        case 'OKK':
-            console.log("action.re", action.data);
-            return action.data;
-        case 'ERROR':
-            console.log("action error", action.data);
-            return [...state];
-        default:
-            return [...state];
-    }
-}
+import { combineReducers } from 'redux';
+import data from './data';
+import filterPrice from './filterPrice';
+import filterColor from './filterColor';
+import filterSpecies from './filterSpecies';
+import sort from './sort'
+
+export default combineReducers({
+    data,
+    filterPrice,
+    filterColor,
+    filterSpecies,
+    sort
+})

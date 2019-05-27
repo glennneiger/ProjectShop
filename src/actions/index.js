@@ -1,4 +1,5 @@
 import axios from 'axios';
+// import { cpus } from 'os';
 
 
 export function fetchProducts() {
@@ -18,4 +19,22 @@ export function fetchSuccess(re) {
 }
 export function fetchError(er) {
 	return { type: 'ERROR', data: er};
+}
+
+export function filterColor(color) {
+	return { type: 'FILTERCOLOR', color: color};
+}
+export function allColor(color) {
+	return { type: 'ALLCOLOR', color: color};
+}
+
+export function filterSpecies(species) {
+	return { type: 'FILTERSPECIES', species: species};
+}
+export function allSpecies(species) {
+	return { type: 'ALLSPECIES', species: species};
+}
+
+export function sort(data) {
+	return { type: 'SORT', data: data};
 }
