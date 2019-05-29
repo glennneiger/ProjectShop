@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 
 class Home extends Component {
     render() {
-        const data = this.props.todoList;
+        const data = this.props.todoList.data;
         const slideImages = [
             'images/slide1.png',
             'images/slide2.png',
