@@ -8,9 +8,10 @@ class ResultViewList extends React.Component {
     render() {
         const filterColor = this.props.dataList.filterColor;
         const filterSpecies = this.props.dataList.filterSpecies;
+        const filterPrice = this.props.dataList.filterPrice;
         const listFilter = this.props.dataList.data.filter(
             (list) => {
-                return list.color.indexOf(filterColor) !== -1 && list.species.indexOf(filterSpecies) !== -1;
+                return list.color.indexOf(filterColor) !== -1 && list.species.indexOf(filterSpecies) !== -1 && filterPrice.min <= parseInt(list.price) && parseInt(list.price) <= filterPrice.max;
             }
         );
         const sortProduct = listFilter.slice(0);
@@ -32,8 +33,6 @@ class ResultViewList extends React.Component {
         });
         return (
             <div className="resultViewList">
-                            <button onClick={()=>console.log(this.props.todoList1[0].name)}>ABC</button>
-
                 {listData}
             </div>
         );

@@ -19,8 +19,8 @@ class GridView extends React.Component {
                         <i className="fas fa-star"></i>
                     </p>
                     <div className="itemPrice">
-                        <span className="resultView_itemPrice-current"> {price} đ </span>
-                        <span className="resultView_itemPrice-last"> {price} đ </span>
+                        <span className="resultView_itemPrice-current"> {parseInt(price)} đ </span>
+                        <span className="resultView_itemPrice-last"> {parseInt(price)} đ </span>
                     </div>
                 </div>
             </div>

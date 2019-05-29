@@ -39,6 +39,7 @@
 }
 
 .filter_item{
+    display: block;
     font-family: 'Roboto Slab', serif;
     font-size: 12px;
     padding: 15px 0;
@@ -46,11 +47,52 @@
     cursor: pointer;
     box-sizing: border-box;
     color: #c6c5c5;
+    position: relative;
+    display: flex;
+    align-items: center;
 }
-.filter_item:hover{
+/* .filter_item:hover{
     color: #333;
+} */
+.filter_item .hidden{
+    display: none;
 }
-
+.label{
+    position: relative;
+    display: block;
+    /* float: left; */
+    margin-right: 10px;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #C8CCD4;
+    border-radius: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+.label::after{
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background: #225CFF;
+    transform: scale(0);
+    transition: all .2s ease;
+    opacity: .08;
+    pointer-events: none;
+}
+.filter_item:hover .label::after{
+    transform: scale(3.6);
+}
+input[type="radio" ]:checked + .label {
+    border-color: #225cff;
+}
+input[type="radio"]:checked + .label:after {
+    transform: scale(1);
+    transition: all 0.2s cubic-bezier(0.35, 0.9, 0.4, 0.9);
+    opacity: 1;
+}
 
 
 
@@ -89,6 +131,8 @@
     border-bottom: 0;
     padding: 20px 0 20px 34px;
     position: relative;
+    display: flex;
+    justify-content: space-between;
 }
 .filterColor .filter_item::before{
     content: '';
@@ -115,6 +159,9 @@
 }
 .filterColor .filter_item:nth-child(6)::before{
     background-color: #f15f74;
+}
+.filterColor .filter_item:nth-child(7)::before{
+    background-color: #fff;
 }
 
 /* End menu-left */
@@ -144,6 +191,7 @@
     display: inline-block;
     margin-right: 12px;
     cursor: pointer;
+    color: #333;
 }
 .sort_product{
     margin-left: 40px;

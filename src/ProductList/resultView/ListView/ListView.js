@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 
 class ListView extends React.Component {
@@ -26,6 +27,9 @@ class ListView extends React.Component {
                         {price} đ
                     </p>
                     <button type="button" className="resultView_itemBtn"> MUA NGAY </button>
+                    <Link to="/regis"><i className="fas fa-user-plus"></i>Đăng kíg</Link>
+                    <Link to="/login"><i className="fas fa-user"> </i>Đăng nhập</Link>
+                    <Link to="/product-Detail">detail</Link>
                 </div>
             </div>
         );
