@@ -1,7 +1,7 @@
 import React from 'react';
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route, NavLink } from "react-router-dom";
 import { connect } from 'react-redux';
-import { fetchProducts, filterColor, filterSpecies, sort } from '../actions';
+import { fetchProducts, filterColor, filterSpecies, filterPrice, sort } from '../actions';
 import heading from './heading.png';
 import './productList.css';
 import ResultViewGrid from './resultView/resultViewGrid';
@@ -20,29 +20,87 @@ class ProductList extends React.Component {
                             <div className="filterSpecies">
                                 <p className="block_title">
                                     Danh mục sản phẩm
-                        </p>
+                                </p>
                                 <hr className="block_title-hr"></hr>
                                 <div>
-                                    <div className="filter_item" onClick={ () => this.props.filterSpecies("chautreo")} > Cây chậu treo </div>
-                                    <div className="filter_item" onClick={ () => this.props.filterSpecies("cohoa")} > Cây cỏ hoa </div>
-                                    <div className="filter_item" onClick={ () => this.props.filterSpecies("dayleo")} > Cây dây leo </div>
-                                    <div className="filter_item" onClick={ () => this.props.filterSpecies("deban")} > Cây để bàn </div>
-                                    <div className="filter_item" onClick={ () => this.props.filterSpecies("mayman")} > Cây may mắn </div>
-                                    <div className="filter_item" onClick={ () => this.props.filterSpecies("trangtri")} > Cây trang trí </div>
-                                    <div className="filter_item" onClick={ () => this.props.filterSpecies("noithat")} > Cây nội thất </div>
+                                    <label className="filter_item" htmlFor="allPrices" >
+                                        <input id="allPrices" type="radio" name="species" value="" className="hidden" onChange={() => this.props.filterSpecies("")} defaultChecked />
+                                        <span className="label"></span>
+                                        Tất cả
+                                    </label>
+                                    <label className="filter_item" htmlFor="chautreo" >
+                                        <input id="chautreo" type="radio" name="species" value="chautreo" className="hidden" onChange={() => this.props.filterSpecies("chautreo")} />
+                                        <span className="label"></span>
+                                        Cây chậu treo
+                                    </label>
+                                    <label className="filter_item" htmlFor="cohoa" >
+                                        <input id="cohoa" type="radio" name="species" value="cohoa" className="hidden" onChange={() => this.props.filterSpecies("cohoa")} />
+                                        <span className="label"></span>
+                                        Cây cỏ hoa
+                                    </label>
+                                    <label className="filter_item" htmlFor="dayleo" >
+                                        <input id="dayleo" type="radio" name="species" value="dayleo" className="hidden" onChange={() => this.props.filterSpecies("dayleo")} />
+                                        <span className="label"></span>
+                                        Cây dây leo
+                                    </label>
+                                    <label className="filter_item" htmlFor="deban" >
+                                        <input id="deban" type="radio" name="species" value="deban" className="hidden" onChange={() => this.props.filterSpecies("deban")} />
+                                        <span className="label"></span>
+                                        Cây để bàn
+                                    </label>
+                                    <label className="filter_item" htmlFor="mayman" >
+                                        <input id="mayman" type="radio" name="species" value="mayman" className="hidden" onChange={() => this.props.filterSpecies("mayman")} />
+                                        <span className="label"></span>
+                                        Cây may mắn
+                                    </label>
+                                    <label className="filter_item" htmlFor="trangtri" >
+                                        <input id="trangtri" type="radio" name="species" value="trangtri" className="hidden" onChange={() => this.props.filterSpecies("trangtri")} />
+                                        <span className="label"></span>
+                                        Cây trang tri
+                                    </label>
+                                    <label className="filter_item" htmlFor="noithat" >
+                                        <input id="noithat" type="radio" name="species" value="noithat" className="hidden" onChange={() => this.props.filterSpecies("noithat")} />
+                                        <span className="label"></span>
+                                        Cây nội thất
+                                    </label>
                                 </div>
                             </div>
                             <div className="filterPrice">
                                 <p className="block_title">
                                     Tìm theo giá
-                        </p>
+                                </p>
                                 <hr className="block_title-hr"></hr>
                                 <div>
-                                    <div className="filter_item"> 200.000 Đ-400.000 Đ </div>
-                                    <div className="filter_item"> 400.000 Đ-600.000 Đ </div>
-                                    <div className="filter_item"> 600.000 Đ-800.000 Đ </div>
-                                    <div className="filter_item"> 800.000 Đ-1.000.000 Đ </div>
-                                    <div className="filter_item"> 1.000.000 Đ-2.000.000 Đ </div>
+                                    <label className="filter_item" htmlFor="allPrice" >
+                                        <input id="allPrice" type="radio" name="price" className="hidden" onChange={() => this.props.filterPrice(0,2000000)} defaultChecked />
+                                        <span className="label"></span>
+                                        Tất cả
+                                    </label>
+                                    <label className="filter_item" htmlFor="twoFour" >
+                                        <input id="twoFour" type="radio" name="price" className="hidden" onChange={() => this.props.filterPrice(200000,400000)} />
+                                        <span className="label"></span>
+                                        200.000 Đ-400.000 Đ
+                                    </label>
+                                    <label className="filter_item" htmlFor="fourSix" >
+                                        <input id="fourSix" type="radio" name="price" className="hidden" onChange={() => this.props.filterPrice(400000,600000)} />
+                                        <span className="label"></span>
+                                        400.000 Đ-600.000 Đ
+                                    </label>
+                                    <label className="filter_item" htmlFor="sixEight" >
+                                        <input id="sixEight" type="radio" name="price" className="hidden" onChange={() => this.props.filterPrice(600000,800000)} />
+                                        <span className="label"></span>
+                                        600.000 Đ-800.000 Đ
+                                    </label>
+                                    <label className="filter_item" htmlFor="eightTen" >
+                                        <input id="eightTen" type="radio" name="price" className="hidden" onChange={() => this.props.filterPrice(800000,1000000)} />
+                                        <span className="label"></span>
+                                        800.000 Đ-1.000.000 Đ
+                                    </label>
+                                    <label className="filter_item" htmlFor="tenTwenty" >
+                                        <input id="tenTwenty" type="radio" name="price" className="hidden" onChange={() => this.props.filterPrice(1000000,2000000)} />
+                                        <span className="label"></span>
+                                        1.000.000 Đ-2.000.000 Đ
+                                    </label>
                                 </div>
                             </div>
                             <div className="filterColor">
@@ -51,12 +109,41 @@ class ProductList extends React.Component {
                         </p>
                                 <hr className="block_title-hr"></hr>
                                 <div>
-                                    <div className="filter_item" onClick={() => this.props.filtercolor("#98cb4a")} > Xanh cây </div>
-                                    <div className="filter_item" onClick={() => this.props.filtercolor("#f76d3c")} > Đỏ cam </div>
-                                    <div className="filter_item" onClick={() => this.props.filtercolor("#913ccd")} > Tím </div>
-                                    <div className="filter_item" onClick={() => this.props.filtercolor("#5481e6")} > Xanh trời </div>
-                                    <div className="filter_item" onClick={() => this.props.filtercolor("#f7d842")} > Vàng </div>
-                                    <div className="filter_item" onClick={() => this.props.filtercolor("#f15f74")} > Hồng </div>
+                                    <label className="filter_item" htmlFor="xanhcay" >
+                                        <input id="xanhcay" type="radio" name="color" className="hidden" onChange={() => this.props.filterColor("#98cb4a")} />
+                                        Xanh cây
+                                        <span className="label"></span>
+                                    </label>
+                                    <label className="filter_item" htmlFor="docam" >
+                                        <input id="docam" type="radio" name="color" className="hidden" onChange={() => this.props.filterColor("#f76d3c")} />
+                                        Đỏ cam
+                                        <span className="label"></span>
+                                    </label>
+                                    <label className="filter_item" htmlFor="tim" >
+                                        <input id="tim" type="radio" name="color" className="hidden" onChange={() => this.props.filterColor("#913ccd")} />
+                                        Tím
+                                        <span className="label"></span>
+                                    </label>
+                                    <label className="filter_item" htmlFor="xanhtroi" >
+                                        <input id="xanhtroi" type="radio" name="color" className="hidden" onChange={() => this.props.filterColor("#5481e6")} />
+                                        Xanh trời
+                                        <span className="label"></span>
+                                    </label>
+                                    <label className="filter_item" htmlFor="vang" >
+                                        <input id="vang" type="radio" name="color" className="hidden" onChange={() => this.props.filterColor("#f7d842")} />
+                                        Vàng
+                                        <span className="label"></span>
+                                    </label>
+                                    <label className="filter_item" htmlFor="hong" >
+                                        <input id="hong" type="radio" name="color" className="hidden" onChange={() => this.props.filterColor("#f15f74")} />
+                                        Hồng
+                                        <span className="label"></span>
+                                    </label>
+                                    <label className="filter_item" htmlFor="allColor" >
+                                        <input id="allColor" type="radio" name="color" className="hidden" onChange={() => this.props.filterColor("")} defaultChecked />
+                                        Tất cả
+                                        <span className="label"></span>
+                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -68,17 +155,17 @@ class ProductList extends React.Component {
                                 </div>
                                 <div className="headingNav">
                                     <div>
-                                        <Link to="/product" className="view_product">
+                                        <NavLink exact to="/product" exact activeStyle={{color: "#59b586"}} className="view_product">
                                             <i className="fas fa-th"></i>
-                                        </Link>
-                                        <Link to="/product/listView" className="view_product">
+                                        </NavLink>
+                                        <NavLink exact to="/product/listView" exact activeStyle={{color: "#59b586"}} className="view_product">
                                             <i className="fas fa-list"></i>
-                                        </Link>
+                                        </NavLink>
                                     </div>
                                     <div>
                                         <div className="sort_product">
                                             <span>Sắp xếp theo</span>
-                                            <select onChange={ event => this.props.sortProduct(event.target.value)}>
+                                            <select onChange={event => this.props.sortProduct(event.target.value)}>
                                                 <option value="name"> Tên sản phẩm </option>
                                                 <option value="price"> Giá sản phẩm </option>
                                             </select>
@@ -95,8 +182,8 @@ class ProductList extends React.Component {
                             </div>
 
                             <div className="resultView">
-                                <Route exact path="/product" component={ResultViewGrid}/>
-                                <Route path="/product/listView" component={ResultViewList}/>
+                                <Route exact path="/product" component={ResultViewGrid} />
+                                <Route path="/product/:listView" component={ResultViewList} />
                             </div>
 
                             <div className="pageController_product">
@@ -120,7 +207,8 @@ class ProductList extends React.Component {
 const mapDispatchToProps = dispatch => {
     return {
         fetchProducts: () => dispatch(fetchProducts()),
-        filtercolor: (color) => dispatch(filterColor(color)),
+        filterColor: (color) => dispatch(filterColor(color)),
+        filterPrice: (min, max) => dispatch(filterPrice(min, max)),
         filterSpecies: (species) => dispatch(filterSpecies(species)),
         sortProduct: (data) => dispatch(sort(data))
     }

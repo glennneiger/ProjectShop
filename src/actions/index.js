@@ -24,15 +24,13 @@ export function fetchError(er) {
 export function filterColor(color) {
 	return { type: 'FILTERCOLOR', color: color};
 }
-export function allColor(color) {
-	return { type: 'ALLCOLOR', color: color};
-}
 
 export function filterSpecies(species) {
 	return { type: 'FILTERSPECIES', species: species};
 }
-export function allSpecies(species) {
-	return { type: 'ALLSPECIES', species: species};
+
+export function filterPrice(min,max) {
+	return { type: 'FILTERPRICE', min: min, max: max};
 }
 
 export function sort(data) {

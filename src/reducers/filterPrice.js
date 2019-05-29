@@ -1,9 +1,11 @@
 
-export default function filterPrice(state = "", action) {
+export default function filterPrice(state = {min: 0, max: 2000000}, action) {
     switch (action.type) {
-        case 'filterPrice':
-            console.log("action.re", action.data);
-            return action.data;
+        case 'FILTERPRICE':
+            return {
+                min: action.min,
+                max: action.max
+            };
         default:
             return state;
     }

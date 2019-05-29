@@ -8,12 +8,15 @@ class ResultViewGrid extends React.Component {
     render() {
         const filterColor = this.props.dataList.filterColor;
         const filterSpecies = this.props.dataList.filterSpecies;
+        const filterPrice = this.props.dataList.filterPrice;
+        // console.log("price min : " , (filterPrice.min));
+        // console.log("price max : " , (filterPrice.max));
         const listFilter = this.props.dataList.data.filter(
             (list) => {
-                return list.color.indexOf(filterColor) !== -1 && list.species.indexOf(filterSpecies) !== -1;
+                return list.color.indexOf(filterColor) !== -1 && list.species.indexOf(filterSpecies) !== -1 && filterPrice.min <= parseInt(list.price) && parseInt(list.price) <= filterPrice.max;
             }
         );
-        // console.log(this.props.dataList.sort)
+        // console.log(listFilter);
         const sortProduct = listFilter.slice(0);
 
         this.props.dataList.sort === "name"
