@@ -1,24 +1,89 @@
 import React, { Component } from "react";
 import './Login.css';
-
+import axios from 'axios';
+import Home from '../Home/home'
 class Login extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+          username: "" ,
+          pw:"" ,
+          checkLogIn:false,
+        }
+    }    
+     checkLength = (o, n, min, max)=> {
+        if (o.length > max || o.length < min) {
+          alert("Length of " + n + " must be between " +
+            min + " and " + max + ".");
+          return false;
+        } else {
+              return true;
+        }
+      }
+       checkRegexp = (o, regexp, n) => {
+        if (!(regexp.test(o))) {
+            alert("Wrong Email Validation. " +n);
+          return false;
+        } else {
+          return true;
+        }
+      }
+    getUser = (e) => {
+        var valid = true;
+        var emailRegex =/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+        e.preventDefault();
+        const user = e.target.value;
+        console.log(this.state);
+        var state = this.state;
+        var self = this;
+        axios.get(`https://5ca5c51d3a08260014278a74.mockapi.io/user`)
+        .then((res) => {
+            res.data.forEach(function(element){
+                valid = valid && self.checkLength(state.username, "Email", 6, 25);
+                valid = valid && self.checkLength(state.pw, "password   ", 6, 16);
+                valid = valid && self.checkRegexp(state.username, emailRegex," Example: ui@jquery.com");
+                
+                if(element.email === state.username&&element.name === state.pw&&valid)
+                 {  
+                     self.setState({checkLogIn: true})
+                     alert("Log In Success !!")
+                }
+                else  console.log("");
+            })
+        })
+       
+    }
+    
+  getInputUser = (e)=>{
+    // console.log(e.target.value)
+    this.setState({
+      username:e.target.value
+    })
+  }
+  getInputPw = (e)=>{
+    console.log(e.target.value)
+    this.setState({
+      pw:e.target.value
+    })
+  }
   render() {
- 
-    return (
-      
-        <div className="Login">
+
+  return (
+      <div>
+        {this.state.checkLogIn ? <Home></Home>
+            : <div className="Login">
             <div className="Left">
                 <div>
                     <p>THÔNG TIN CÁ NHÂN</p>
                 </div>
                 <div>
                     <div>
-                        <label>Email của bạn</label>
-                        <input type="text"></input>
+                        <label>Email của bạn {this.state.username}</label>
+                        <input onChange={this.getInputUser} type="text"></input>
                     </div>
                     <div>
-                        <label>Mật khẩu</label>
-                        <input type="text"></input>
+                        <label>Mật khẩu {this.state.pw}</label>
+                        <input onChange={this.getInputPw} type="text"></input>
                     </div>
                     <div className="checkBox">
                         <input type="checkbox"></input>
@@ -26,7 +91,7 @@ class Login extends Component {
                         <span>Bạn quên mật khẩu</span>
                     </div>
                     <div>
-                        <button>ĐĂNG NHẬP</button>
+                        <button onClick={this.getUser} value="sss">ĐĂNG NHẬP</button>
                     </div>
 
                 </div>
@@ -45,6 +110,8 @@ class Login extends Component {
             </div>
         </div>
      
+        }
+        </div>
     );
   }
 }
