@@ -10,10 +10,13 @@
   position: relative;
 }
 .HeaderImg-wrapInner {
-  display: inline-block;
+  display: flex;
+  width: 555px;
+  justify-content: space-between;
+  align-items: center;
   position: absolute;
   top: 25%;
-  right: 0%;
+  right: 0;
 }
 .HeaderImg-inner {
   display: inline-block;
@@ -27,6 +30,7 @@
   display: inline-block;
   margin-top: 0px;
   padding-left: 30px;
+  cursor: pointer;
 }
 .HeaderImg-cart i {
   font-size: 1.2em;
@@ -48,15 +52,21 @@
 .HeaderImg form {
   border-radius: 25px;
   border: 1px solid #eeeeee;
-  padding: 10px;
+  padding-left: 20px;
   margin-top:16px;
+  overflow: hidden;
 }
 .HeaderImg form input {
   border: none;
+  padding-left: 10px;
+  outline: none;
   width: 350px;
 }
 .HeaderImg form button {
   border: none;
+  border-left: 1px solid #eeeeee;
+  outline: none;
+  padding: 15px;
   background: white;
   cursor: pointer;
 }
