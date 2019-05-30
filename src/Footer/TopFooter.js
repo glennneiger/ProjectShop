@@ -31,7 +31,7 @@ class TopFooter extends Component {
                 </div>
 
                 <div>
-                    <form action="/action_page.php">
+                    <form >
                         <input
                             type="text"
                             placeholder="  Tìm kiếm.."

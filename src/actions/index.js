@@ -36,3 +36,7 @@ export function filterPrice(min,max) {
 export function sort(data) {
 	return { type: 'SORT', data: data};
 }
+
+export function productDetail(name, img, price) {
+	return { type: 'PRODUCTDETAIL', name: name, img: img, price: price};
+}
