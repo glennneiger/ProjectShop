@@ -9,8 +9,8 @@ class HeaderImg extends Component {
     return (
       <div className="HeaderImg">
       <div className="HeaderImg-wrap">
-          <img src={image} />
-          <img src={image2} />
+          <img src={image} alt="sdfsf"/>
+          <img src={image2} alt="fsd" />
           <div className="HeaderImg-wrapInner">
           <div className="HeaderImg-inner">
             <span> <i className="fas fa-phone"> </i> HỖ TRỢ : 091270929 -091270929 </span>

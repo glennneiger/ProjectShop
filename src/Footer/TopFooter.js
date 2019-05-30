@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import './TopFooter.css';
 class TopFooter extends Component {
     render() {
@@ -8,18 +9,19 @@ class TopFooter extends Component {
                 <div>
                     <h6>KÊNH THÔNG TIN TỪ CHÚNG TÔI
             <br></br>
-                        <span> <a href="">
-                            <i className="fab fa-facebook-f" />
-                        </a>
-                            <a href="">
+                        <span>
+                            <Link to="/" target="_blank">
+                                <i className="fab fa-facebook-f" />
+                            </Link>
+                            <Link to="/" target="_blank">
                                 <i className="fab fa-twitter" />
-                            </a>
-                            <a href="">
+                            </Link>
+                            <Link to="/" target="_blank">
                                 <i className="fab fa-linkedin-in"></i>
-                            </a>
-                            <a href="">
+                            </Link>
+                            <Link to="/" target="_blank">
                                 <i className="fab fa-instagram"></i>
-                            </a>
+                            </Link>
                         </span>
                     </h6>
                 </div>
@@ -35,7 +37,7 @@ class TopFooter extends Component {
                             placeholder="  Tìm kiếm.."
                             name="search"
                         />
-                        <button type="submit">
+                        <button type="button">
                             <i className="fas fa-paper-plane"></i>
                         </button>
                     </form>

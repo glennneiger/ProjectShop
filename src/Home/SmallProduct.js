@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import './SmallProduct.css';
-import image1 from './spx2-4.png'
+
 class SmallProduct extends Component {
 render() {
     const data = this.props.info;
     var image,name,price;
-    if(data!=undefined) {
+    if(data!==undefined) {
          image=data.img;
          name=data.name;
          price=data.price;
@@ -14,7 +14,7 @@ render() {
         <div className={`SmallProduct`}>
             <div className="smallContainer">
             <div className="smallContainer__img">
-                <img src={image}/>
+                <img src={image} alt="ggg"/>
             </div>
             <div className="smallContainer__text">
                 <div>
@@ -23,11 +23,11 @@ render() {
                 </div>
                 <div>
                     <span>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                        <i className="fas fa-star"></i>
+                        <i className="fas fa-star"></i>
+                        <i className="fas fa-star"></i>
+                        <i className="fas fa-star"></i>
+                        <i className="fas fa-star"></i>
                     </span> 
                 </div>
                 <div>
