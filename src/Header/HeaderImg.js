@@ -14,7 +14,6 @@ class HeaderImg extends Component {
                     <div className="HeaderImg-wrapInner">
                         <div className="HeaderImg-inner">
                             <span> <i className="fas fa-phone"> </i> HỖ TRỢ : 091270929 -091270929 </span>
-
                             <form>
                                 <input type="text" placeholder="  Tìm kiếm.." name="search" />
                                 <button type="button"> <i className="fa fa-search" /> </button>
@@ -32,4 +31,3 @@ class HeaderImg extends Component {
 }
 export default HeaderImg;
 
-//
