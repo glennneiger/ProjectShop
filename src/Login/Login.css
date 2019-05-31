@@ -60,6 +60,7 @@
     color:white;
     font-size:13px;
     margin-bottom: 100px;
+    cursor:pointer;
 }
 .Login  .para {
     width:480px;

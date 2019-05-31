@@ -3,56 +3,56 @@ import './Login.css';
 import axios from 'axios';
 import Home from '../Home/home'
 class Login extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-          username: "" ,
-          pw:"" ,
-          checkLogIn:false,
-        }
-    }    
-     checkLength = (o, n, min, max)=> {
-        if (o.length > max || o.length < min) {
-          alert("Length of " + n + " must be between " +
-            min + " and " + max + ".");
-          return false;
-        } else {
-              return true;
-        }
+  constructor(props){
+      super(props);
+      this.state = {
+        username: "" ,
+        pw:"" ,
+        checkLogIn:false,
       }
-       checkRegexp = (o, regexp, n) => {
-        if (!(regexp.test(o))) {
-            alert("Wrong Email Validation. " +n);
-          return false;
-        } else {
+  }    
+  checkLength = (o, n, min, max)=> {
+    if (o.length > max || o.length < min) {
+      alert("Length of " + n + " must be between " +
+        min + " and " + max + ".");
+      return false;
+    } else {
           return true;
-        }
-      }
-    getUser = (e) => {
-        var valid = true;
-        var emailRegex =/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-        e.preventDefault();
-        // const user = e.target.value;
-        console.log(this.state);
-        var state = this.state;
-        var self = this;
-        axios.get(`https://5ca5c51d3a08260014278a74.mockapi.io/user`)
-        .then((res) => {
-            res.data.forEach(function(element){
-                valid = valid && self.checkLength(state.username, "Email", 6, 25);
-                valid = valid && self.checkLength(state.pw, "password   ", 6, 16);
-                valid = valid && self.checkRegexp(state.username, emailRegex," Example: ui@jquery.com");
-                
-                if(element.email === state.username&&element.name === state.pw&&valid)
-                 {  
-                     self.setState({checkLogIn: true})
-                     alert("Log In Success !!")
-                }
-                else  console.log("");
-            })
-        })
-       
     }
+  }
+    checkRegexp = (o, regexp, n) => {
+    if (!(regexp.test(o))) {
+        alert("Wrong Email Validation. " +n);
+      return false;
+    } else {
+      return true;
+    }
+  }
+  getUser = (e) => {
+      var valid = true;
+      var emailRegex =/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+      e.preventDefault();
+      const user = e.target.value;
+      console.log(this.state);
+      var state = this.state;
+      var self = this;
+      axios.get(`http://5ca34ca3190b430014edbc76.mockapi.io/user`)
+      .then((res) => {
+          res.data.forEach(function(element){
+              valid = valid && self.checkLength(state.username, "Email", 6, 25);
+              valid = valid && self.checkLength(state.pw, "password   ", 6, 16);
+              // valid = valid && self.checkRegexp(state.username, emailRegex," Example: linhnguyen@gmail.com");
+              
+              if(element.username === state.username&&element.pw === state.pw&&valid)
+                {  
+                    self.setState({checkLogIn: true})
+                    alert("Log In Success !!")
+              }
+              else  console.log("");
+          })
+      })
+      
+  }
     
   getInputUser = (e)=>{
     // console.log(e.target.value)
@@ -78,11 +78,11 @@ class Login extends Component {
                 </div>
                 <div>
                     <div>
-                        <label>Email của bạn {this.state.username}</label>
+                        <label>Tên đăng nhập </label>
                         <input onChange={this.getInputUser} type="text"></input>
                     </div>
                     <div>
-                        <label>Mật khẩu {this.state.pw}</label>
+                        <label>Mật khẩu </label>
                         <input onChange={this.getInputPw} type="text"></input>
                     </div>
                     <div className="checkBox">
