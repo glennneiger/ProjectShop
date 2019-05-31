@@ -36,3 +36,7 @@ export function filterPrice(min,max) {
 export function sort(data) {
 	return { type: 'SORT', data: data};
 }
+
+export function checkLogIn(check) {
+	return { type: 'CHECKLOGIN', check: check};
+}

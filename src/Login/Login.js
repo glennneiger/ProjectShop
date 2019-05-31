@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import './Login.css';
 import axios from 'axios';
 import Home from '../Home/home'
+import { connect } from 'react-redux';
+import { fetchProducts,checkLogIn } from '../actions';
 class Login extends Component {
   constructor(props){
       super(props);
@@ -42,20 +44,20 @@ class Login extends Component {
               valid = valid && self.checkLength(state.username, "Email", 6, 25);
               valid = valid && self.checkLength(state.pw, "password   ", 6, 16);
               // valid = valid && self.checkRegexp(state.username, emailRegex," Example: linhnguyen@gmail.com");
-              
               if(element.username === state.username&&element.pw === state.pw&&valid)
                 {  
                     self.setState({checkLogIn: true})
-                    alert("Log In Success !!")
+                    alert("Log In Success !!");
+                   
+                   
               }
-              else  console.log("");
           })
+              if(!self.state.checkLogIn) alert("Wrong username or password")
       })
       
   }
     
   getInputUser = (e)=>{
-    // console.log(e.target.value)
     this.setState({
       username:e.target.value
     })
@@ -66,11 +68,12 @@ class Login extends Component {
       pw:e.target.value
     })
   }
+
   render() {
 
   return (
       <div>
-        {this.state.checkLogIn ? <Home></Home>
+        {this.state.checkLogIn ? <Home login ={true}></Home>
             : <div className="Login">
             <div className="Left">
                 <div>
@@ -115,4 +118,11 @@ class Login extends Component {
     );
   }
 }
-export default Login;
+const mapDispatchToProps = dispatch => {
+  return {
+      fetchProducts: () => dispatch(fetchProducts()),
+      checkLogIn: (check) => dispatch(checkLogIn(check))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Login);

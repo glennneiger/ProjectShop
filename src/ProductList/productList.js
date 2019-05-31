@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, NavLink } from "react-router-dom";
 import { connect } from 'react-redux';
-import { fetchProducts, filterColor, filterSpecies, filterPrice, sort } from '../actions';
+import { fetchProducts, filterColor, filterSpecies, filterPrice, sort,checkLogIn } from '../actions';
 import heading from './heading.png';
 import './productList.css';
 import ResultViewGrid from './resultView/resultViewGrid';
@@ -15,6 +15,7 @@ class ProductList extends React.Component {
         return (
             <BrowserRouter>
                 <div className="wrapper">
+                <button onClick={()=>this.props.checkLogIn("true")}>abc</button>
                     <div className="product container">
                         <div className="menu-left">
                             <div className="filterSpecies">
@@ -210,7 +211,8 @@ const mapDispatchToProps = dispatch => {
         filterColor: (color) => dispatch(filterColor(color)),
         filterPrice: (min, max) => dispatch(filterPrice(min, max)),
         filterSpecies: (species) => dispatch(filterSpecies(species)),
-        sortProduct: (data) => dispatch(sort(data))
+        sortProduct: (data) => dispatch(sort(data)),
+        checkLogIn: (check) => dispatch(checkLogIn(check))
     }
 }
 

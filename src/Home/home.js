@@ -7,12 +7,13 @@ import SmallProduct from './SmallProduct';
 import { connect } from 'react-redux';
 
 class Home extends Component {
+   
     render() {
         const data = this.props.todoList.data;
         const slideImages = [
-            'images/slide1.png',
-            'images/slide2.png',
-            'images/slide3.png'
+            'https://wheelandbarrow.com.au/images/category_banner/DSC_0227.jpg',
+            'https://vuoncayviet.com/data/items/1149/cay-canh-lam-qua-tang-de-thuong.jpg',
+            'https://img.sunset02.com/sites/default/files/styles/4_3_horizontal_inbody_900x506/public/1483569001/grouped-big-leaf-houseplants-sun-0217.jpg?itok=fHBlNTVj'
           ];
         const properties = {
             duration: 7000,

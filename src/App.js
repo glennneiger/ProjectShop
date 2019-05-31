@@ -21,6 +21,7 @@ class App extends React.Component {
         this.props.fetchProducts();
     }
     render() {
+        
         return (
             <BrowserRouter>
                 <div className="App">
@@ -106,5 +107,10 @@ const mapDispatchToProps = dispatch => {
         fetchProducts: () => dispatch(fetchProducts())
     }
 }
+const mapStateToProps = state => {
+    return {
+        todoList: state
+    };
+};
 
 export default connect(null, mapDispatchToProps)(App);
