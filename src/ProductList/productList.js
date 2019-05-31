@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, NavLink } from "react-router-dom";
+import { Route, NavLink } from "react-router-dom";
 import { connect } from 'react-redux';
 import { fetchProducts, filterColor, filterSpecies, filterPrice, sort } from '../actions';
 import heading from './heading.png';
@@ -13,8 +13,11 @@ class ProductList extends React.Component {
     }
     render() {
         return (
-            <BrowserRouter>
                 <div className="wrapper">
+                    <div className="container collectiion_page">
+                        <NavLink exact to="/">Home /</NavLink>
+                        <span>Danh sách sản phẩm</span>
+                    </div>
                     <div className="product container">
                         <div className="menu-left">
                             <div className="filterSpecies">
@@ -155,10 +158,10 @@ class ProductList extends React.Component {
                                 </div>
                                 <div className="headingNav">
                                     <div>
-                                        <NavLink exact to="/product" exact activeStyle={{color: "#59b586"}} className="view_product">
+                                        <NavLink exact to="/product" activeStyle={{color: "#59b586"}} className="view_product">
                                             <i className="fas fa-th"></i>
                                         </NavLink>
-                                        <NavLink exact to="/product/listView" exact activeStyle={{color: "#59b586"}} className="view_product">
+                                        <NavLink exact to="/product/listView" activeStyle={{color: "#59b586"}} className="view_product">
                                             <i className="fas fa-list"></i>
                                         </NavLink>
                                     </div>
@@ -197,7 +200,6 @@ class ProductList extends React.Component {
                         </div>
                     </div>
                 </div>
-            </BrowserRouter>
         )
     }
 }

@@ -1,11 +1,13 @@
 import React from 'react';
-
+import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
+import { productDetail } from '../../../actions';
 
 class GridView extends React.Component {
     render() {
-        const { index, price, name, img } = this.props;
+        const { price, name, img } = this.props;
         return (
-            <div className="resultView_grid">
+            <Link to="/product-Detail" className="resultView_grid" title={name} onClick={() => this.props.productDetail(name,img,price)}>
                 <div className="resultView_itemImg">
                     <img src={img} alt="alt" />
                 </div>
@@ -20,12 +22,18 @@ class GridView extends React.Component {
                     </p>
                     <div className="itemPrice">
                         <span className="resultView_itemPrice-current"> {parseInt(price)} đ </span>
-                        <span className="resultView_itemPrice-last"> {parseInt(price)} đ </span>
+                        <span className="resultView_itemPrice-last"> {parseInt(price) + 50000} đ </span>
                     </div>
                 </div>
-            </div>
+            </Link>
         );
     }
 }
 
-export default GridView;
+const mapDispatchToProps = dispatch => {
+    return {
+        productDetail: (name, img, price) => dispatch(productDetail(name, img, price)),
+    }
+}
+
+export default connect(null, mapDispatchToProps) (GridView);

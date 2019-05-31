@@ -8,7 +8,7 @@ render() {
         <div className="BottomFooter">
             <div>
                 <div className="imageWrap" >
-                    <img src = {image}></img>
+                    <img src = {image} alt="alt"></img>
                     <span>Green Shop được thành lập từ 2019 và nhận được nhiều sự tin tưởng và nhận được 
                     nhiều sự tin tưởng và nhận được nhiều sự tin tưởng</span>
                    
