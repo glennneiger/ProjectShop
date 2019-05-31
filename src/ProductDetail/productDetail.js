@@ -4,13 +4,16 @@ import { Link } from 'react-router-dom';
 import { NavLink } from "react-router-dom";
 import { connect } from 'react-redux';
 import { productDetail } from '../actions';
+import Modal from 'react-awesome-modal';
 
 
 class ProductDetail extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            srcimg: this.props.productDetails.productDetail.img
+            srcimg: this.props.productDetails.productDetail.img,
+            number: 0,
+            visible: false
         }
     }
     handleImg(img) {
@@ -18,7 +21,24 @@ class ProductDetail extends React.Component {
             srcimg: img
         })
     }
-    componentDidMount(){
+    handleCount(number) {
+        let count = this.state.number;
+        this.setState({
+            number: count += number
+        })
+    }
+    openModal() {
+        this.setState({
+            visible: true
+        });
+    }
+
+    closeModal() {
+        this.setState({
+            visible: false
+        });
+    }
+    componentDidMount() {
         this.setState({
             srcimg: this.props.productDetails.productDetail.img
         })
@@ -28,7 +48,7 @@ class ProductDetail extends React.Component {
         const img = this.props.productDetails.productDetail.img;
         // console.log(this.props.productDetails.productDetail);
         const price = this.props.productDetails.productDetail.price;
-        console.log(this.state.srcimg);
+        // console.log(this.state.srcimg);
         return (
             <div className="productDetail container">
                 <div className="collectiion_page">
@@ -76,11 +96,48 @@ class ProductDetail extends React.Component {
                         </p>
                         <div className="product_chooseNumber">
                             <span>Số lượng: </span>
-                            <div className="product_abate">-</div>
-                            <div className="product_number">0</div>
-                            <div className="product_augment">+</div>
+                            <button type="button" className="product_abate" disabled={this.state.number < 1} onClick={() => this.handleCount(-1)} >-</button>
+                            <div className="product_number"> {this.state.number} </div>
+                            <button type="button" className="product_augment" onClick={() => this.handleCount(1)} >+</button>
                         </div>
-                        <button type="button" className="product_btn"> MUA NGAY </button>
+                        <button type="button" className="product_btn" onClick={() => this.openModal()}> MUA NGAY </button>
+                        <Modal
+                            visible={this.state.visible}
+                            width="810"
+                            height="350"
+                            effect="fadeInDown"
+                            onClickAway={() => this.closeModal()}
+                        >
+                            <div className="modal_box">
+                                <div className="modal_header">
+                                    <p>Chào mừng bạn! Hãy đăng nhập để tiếp tục</p>
+                                    <div>
+                                        Bạn chưa là thành viên? <button type="button">Đăng kí</button> ngay.
+                                </div>
+                                </div>
+                                <div className="modal_body">
+                                    <div className="modal_input">
+                                        <div className="login_input">
+                                            <label htmlFor="input_name" >Tên đăng nhập hoặc email*</label>
+                                            <input id="input_name" class="input-with-status__input" type="text" placeholder="Vui lòng nhập tên đăng nhập hoặc email của bạn" />
+                                        </div>
+                                        <div className="login_input">
+                                            <label htmlFor="input_pw">Mật khẩu*</label>
+                                            <input id="input_pw" class="input-with-status__input" type="password" placeholder="Vui lòng nhập mật khẩu của bạn" />
+                                        </div>
+                                        <div className="login_forgot">
+                                            <button>Quên mật khẩu?</button>
+                                        </div>
+                                    </div>
+                                    <div className="modal_btn">
+                                        <button type="button" className="mod-button">Đăng nhập</button>
+                                        <p>Hoặc, đăng nhập bằng</p>
+                                        <button type="button" className="mod-button mod-login-fb "> <i className="fab fa-facebook-f"></i> &emsp; Facebook</button>
+                                        <button type="button" className="mod-button mod-login-google"> <i className="fab fa-google-plus-g"></i> &emsp; Google</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </Modal>
                     </div>
                 </div>
 
@@ -90,7 +147,7 @@ class ProductDetail extends React.Component {
                     </p>
                     <hr className="block_title-hr"></hr>
                     <div className="product_same-box">
-                        <Link to="/product-Detail" className="product_same-item" onClick={() => this.props.productDetail("Cây cọ Nhật","images/spx2-4.png",250000)}>
+                        <Link to="/product-Detail" className="product_same-item" onClick={() => this.props.productDetail("Cây cọ Nhật", "images/spx2-4.png", 250000)}>
                             <div className="same-img">
                                 <img src="images/spx2-4.png" alt="alt" />
                             </div>
@@ -109,7 +166,7 @@ class ProductDetail extends React.Component {
                                 </div>
                             </div>
                         </Link>
-                        <Link to="/product-Detail" className="product_same-item" onClick={() => this.props.productDetail("Cây Dạ Lam","images/spx2-5.png",280000)}>
+                        <Link to="/product-Detail" className="product_same-item" onClick={() => this.props.productDetail("Cây Dạ Lam", "images/spx2-5.png", 280000)}>
                             <div className="same-img">
                                 <img src="images/spx2-4.png" alt="alt" />
                             </div>
@@ -124,11 +181,11 @@ class ProductDetail extends React.Component {
                                 </p>
                                 <div className="same_price">
                                     <span className="same_price-current product_price-current"> 250000 đ </span>
-                                    <span className="same_price-last product_price-last"> 250000 đ </span>
+                                    <span className="same_price-last product_price-last"> 260000 đ </span>
                                 </div>
                             </div>
                         </Link>
-                        <Link to="/product-Detail" className="product_same-item" onClick={() => this.props.productDetail("Cây Cọ Ta","images/spx2-6.png",250000)}>
+                        <Link to="/product-Detail" className="product_same-item" onClick={() => this.props.productDetail("Cây Cọ Ta", "images/spx2-6.png", 250000)}>
                             <div className="same-img">
                                 <img src="images/spx2-3.png" alt="alt" />
                             </div>
@@ -143,11 +200,11 @@ class ProductDetail extends React.Component {
                                 </p>
                                 <div className="same_price">
                                     <span className="same_price-current product_price-current"> 250000 đ </span>
-                                    <span className="same_price-last product_price-last"> 250000 đ </span>
+                                    <span className="same_price-last product_price-last"> 280000 đ </span>
                                 </div>
                             </div>
                         </Link>
-                        <Link to="/product-Detail" className="product_same-item" onClick={() => this.props.productDetail("Cây Cây Cây","images/spx2-10.png",220000)}>
+                        <Link to="/product-Detail" className="product_same-item" onClick={() => this.props.productDetail("Cây Cây Cây", "images/spx2-10.png", 220000)}>
                             <div className="same-img">
                                 <img src="images/spx2-3.png" alt="alt" />
                             </div>
@@ -162,7 +219,7 @@ class ProductDetail extends React.Component {
                                 </p>
                                 <div className="same_price">
                                     <span className="same_price-current product_price-current"> 250000 đ </span>
-                                    <span className="same_price-last product_price-last"> 250000 đ </span>
+                                    <span className="same_price-last product_price-last"> 270000 đ </span>
                                 </div>
                             </div>
                         </Link>
