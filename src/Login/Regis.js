@@ -14,8 +14,7 @@ class Regis extends Component {
            email:"",
           checkLogIn:false,
      }
-    }   
-        
+    }
   getInputUser = (e)=>{
     this.setState({
       username:e.target.value
