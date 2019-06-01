@@ -1,4 +1,6 @@
 .Product {
+    display: block;
+    cursor: pointer;
     border: 1px solid rgb(150, 150, 150);
     text-align: center;
 }
@@ -6,6 +8,9 @@
 
  .Product__text div:first-child {
     padding: 20px 0px 15px 0px;
+}
+.Product__text div:first-child span {
+    color: #555555;
 }
  .Product__text div:nth-child(2) {
     padding-bottom:20px;

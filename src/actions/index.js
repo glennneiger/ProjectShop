@@ -40,6 +40,7 @@ export function sort(data) {
 
 export function checkLogIn(check) {
 	return { type: 'CHECKLOGIN', check: check};
+}
 
 export function productDetail(name, img, price) {
 	return { type: 'PRODUCTDETAIL', name: name, img: img, price: price};
