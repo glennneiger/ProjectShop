@@ -95,7 +95,7 @@ class Home extends Component {
                             
                     </div>
                     <div className="banner">
-                        <img src={banner}></img>
+                        <img src={banner} alt="alr"></img>
                     </div>
                     <div className="hotProduct_ct3">
                         <p className="blockTitle">

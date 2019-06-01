@@ -6,6 +6,7 @@
 .product_info{
     display: flex;
     justify-content: space-between;
+    margin-top: 62px;
     margin-bottom: 112px;
 }
 .product_info-gallery{
@@ -88,12 +89,14 @@
     border: 1px solid #ebebeb;
     padding: 19px;
     cursor: pointer;
+    outline: none;
 }
 .product_abate{
     box-sizing: border-box;
     border: 1px solid #ebebeb;
-    padding: 19px 20px;
+    padding: 19px 21px;
     cursor: pointer;
+    outline: none;
 }
 .product_number{
     margin: 0 8px;
@@ -163,4 +166,11 @@
 .same_desc{
     text-align: center;
     padding: 23px 0 35px 0;
+}
+.same_name{
+    color: #555555;
+}
+
+button:disabled{
+    cursor: no-drop;
 }

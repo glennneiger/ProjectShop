@@ -29,10 +29,10 @@
     padding:12px;
 }
 .TopFooter button {
-    
     background:#3FB871;
     padding:13px;
-    border:none;    
+    border:none;
+    cursor: pointer;
 }
 .TopFooter i {
     color:gray;
