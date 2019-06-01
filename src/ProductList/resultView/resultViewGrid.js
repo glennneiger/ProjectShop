@@ -7,6 +7,7 @@ import GridView from './GridView/GridView';
 class ResultViewGrid extends React.Component {
     render() {
         const filterColor = this.props.dataList.filterColor;
+        console.log(filterColor)
         const filterSpecies = this.props.dataList.filterSpecies;
         const filterPrice = this.props.dataList.filterPrice;
         // console.log("price min : " , (filterPrice.min));
@@ -16,7 +17,7 @@ class ResultViewGrid extends React.Component {
                 return list.color.indexOf(filterColor) !== -1 && list.species.indexOf(filterSpecies) !== -1 && filterPrice.min <= parseInt(list.price) && parseInt(list.price) <= filterPrice.max;
             }
         );
-        // console.log(listFilter);
+        console.log(listFilter);
         const sortProduct = listFilter.slice(0);
 
         this.props.dataList.sort === "name"

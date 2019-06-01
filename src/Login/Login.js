@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import './Login.css';
 import axios from 'axios';
 import Home from '../Home/home'
+import { connect } from 'react-redux';
+import { fetchProducts,checkLogIn } from '../actions';
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -110,4 +112,11 @@ class Login extends Component {
         );
     }
 }
-export default Login;
+const mapDispatchToProps = dispatch => {
+  return {
+      fetchProducts: () => dispatch(fetchProducts()),
+      checkLogIn: (check) => dispatch(checkLogIn(check))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Login);
