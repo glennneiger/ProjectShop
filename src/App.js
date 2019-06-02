@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Footer from './Footer/Footer';
 
 import { connect } from 'react-redux';
-import { fetchProducts } from './actions'
+import { fetchProducts,checkLogIn } from './actions'
 import './NavBar.css';
 import './App.css';
 import './TopHeader.css';
@@ -19,6 +19,9 @@ class App extends React.Component {
         this.props.fetchProducts();
     }
     render() {
+        console.log(this.props.dataList);
+        console.log(this.props.dataList.checkLogIn.name);
+        const name = this.props.dataList.checkLogIn.name;
         return (
             <div className="App">
                 <div className="TopHeader">
@@ -30,8 +33,17 @@ class App extends React.Component {
                         <Link to="/"> <i className="fab fa-linkedin-in" /> </Link>
                         <Link to="/"> <i className="fab fa-instagram" /> </Link>
                         <div className="TopHeader-login">
-                            <Link to="/login"><i className="fas fa-user"> </i>Đăng nhập</Link>
-                            <Link to="/regis"><i className="fas fa-user-plus"></i>Đăng kí</Link>
+                        {!this.props.dataList.checkLogIn.status 
+                            ?  <>
+                                <Link to="/login"><i className="fas fa-user"> </i>Đăng nhập</Link>
+                                <Link to="/regis"><i className="fas fa-user-plus"></i>Đăng kí</Link>
+                                </>
+                            : <>
+                                <Link to="/login"><i className="fas fa-user"> </i>{name}</Link>
+                                <Link to="/" onClick={()=>this.props.checkLogIn(false,name,[])}><i className="fas fa-user-plus"></i>Log out</Link>
+                                </>
+                        }
+                            
                         </div>
                     </div>
 
@@ -54,7 +66,8 @@ class App extends React.Component {
                             </div>
                         </div>
                     </div>
-                </div>                <div className="NavBar">
+                </div>               
+                 <div className="NavBar">
                     <ul >
                         <li>
                             <Link to="/"> <i className="fas fa-bars"></i> </Link>
@@ -88,11 +101,18 @@ class App extends React.Component {
         );
     }
 }
+const mapStateToProps = state => {
+    return {
+        dataList: state
+    };
+};
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchProducts: () => dispatch(fetchProducts())
+        fetchProducts: () => dispatch(fetchProducts()),
+        checkLogIn: (status,name,cart) => dispatch(checkLogIn(status,name,cart))
+
     }
 }
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

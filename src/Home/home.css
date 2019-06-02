@@ -175,6 +175,23 @@ height:200px;
 .home .images-wrap {
     height:100%;
 }
+.home .modal_header  {
+    background:#3FB871;
+    margin-bottom: 20px;
+}
+.home .modal_header p {
+    color:white;
+    font-size:1.5em;
+}
+.home .modal_header span {
+    color:white;
+    font-size:1.2em;
+}
+.home .modal_header button {
+    color:red;
+    font-size:1em;
+
+}
 @media only screen and (max-width: 360px)  {
     .home .images-wrap {
         height:250px;

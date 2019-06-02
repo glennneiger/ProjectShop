@@ -68,31 +68,16 @@ class Home extends Component {
                 >
                     <div className="modal_box">
                         <div className="modal_header">
-                            <p>Chào mừng bạn! Hãy đăng nhập để tiếp tục</p>
+                            <p>Chào mừng bạn đã đến với Green Shop</p>
                             <div>
-                                Bạn chưa là thành viên? <button type="button">Đăng kí</button> ngay.
+                                <span></span>Bạn chưa là thành viên? <button type="button">Đăng kí</button> ngay.
                                 </div>
                         </div>
                         <div className="modal_body">
-                            <div className="modal_input">
-                                <div className="login_input">
-                                    <label htmlFor="input_name" >Tên đăng nhập hoặc email*</label>
-                                    <input id="input_name" className="input-with-status__input" type="text" placeholder="Vui lòng nhập tên đăng nhập hoặc email của bạn" />
-                                </div>
-                                <div className="login_input">
-                                    <label htmlFor="input_pw">Mật khẩu*</label>
-                                    <input id="input_pw" className="input-with-status__input" type="password" placeholder="Vui lòng nhập mật khẩu của bạn" />
-                                </div>
-                                <div className="login_forgot">
-                                    <button>Quên mật khẩu?</button>
-                                </div>
-                            </div>
-                            <div className="modal_btn">
-                                <button type="button" className="mod-button">Đăng nhập</button>
-                                <p>Hoặc, đăng nhập bằng</p>
-                                <button type="button" className="mod-button mod-login-fb "> <i className="fab fa-facebook-f"></i> &emsp; Facebook</button>
-                                <button type="button" className="mod-button mod-login-google"> <i className="fab fa-google-plus-g"></i> &emsp; Google</button>
-                            </div>
+                                <Product info={data[2]} box="boxA small"></Product>
+                                <Product info={data[5]} box="boxB small"></Product>
+                                <Product info={data[3]} box="boxC small"></Product>
+                               
                         </div>
                     </div>
                 </Modal>
