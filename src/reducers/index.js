@@ -5,6 +5,8 @@ import filterColor from './filterColor';
 import filterSpecies from './filterSpecies';
 import sort from './sort'
 import productDetail from './productDetail';
+import checkLogIn from './checkLogIn';
+import switchLogin from './switchLogin';
 
 export default combineReducers({
     data,
@@ -12,5 +14,7 @@ export default combineReducers({
     filterColor,
     filterSpecies,
     sort,
-    productDetail
+    productDetail,
+    checkLogIn,
+    switchLogin
 })

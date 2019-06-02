@@ -60,4 +60,20 @@
     background: white;
     cursor: pointer;
   }
-  
+  @media only screen and (max-width: 360px)  {
+    .HeaderImg-wrapInner {
+      display: none;
+    }
+    .HeaderImg-wrap img:last-of-type {
+      display:none;
+    }
+    .HeaderImg-wrap  {
+      display:flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .HeaderImg img:first-child {
+      width:225px;
+      padding-bottom: 0;
+    }
+  }

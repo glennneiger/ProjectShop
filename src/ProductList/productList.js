@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, NavLink } from "react-router-dom";
 import { connect } from 'react-redux';
-import { fetchProducts, filterColor, filterSpecies, filterPrice, sort,checkLogIn } from '../actions';
+import { fetchProducts, filterColor, filterSpecies, filterPrice, sort } from '../actions';
 import heading from './heading.png';
 import './productList.css';
 import ResultViewGrid from './resultView/resultViewGrid';
@@ -14,7 +14,6 @@ class ProductList extends React.Component {
     render() {
         return (
                 <div className="wrapper">
-
                     <div className="container collectiion_page">
                         <NavLink exact to="/">Home /</NavLink>
                         <span>Danh sách sản phẩm</span>
@@ -213,8 +212,7 @@ const mapDispatchToProps = dispatch => {
         filterColor: (color) => dispatch(filterColor(color)),
         filterPrice: (min, max) => dispatch(filterPrice(min, max)),
         filterSpecies: (species) => dispatch(filterSpecies(species)),
-        sortProduct: (data) => dispatch(sort(data)),
-        checkLogIn: (check) => dispatch(checkLogIn(check))
+        sortProduct: (data) => dispatch(sort(data))
     }
 }
 

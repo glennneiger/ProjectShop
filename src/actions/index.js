@@ -37,11 +37,14 @@ export function sort(data) {
 	return { type: 'SORT', data: data};
 }
 
+export function productDetail(name, img, price) {
+	return { type: 'PRODUCTDETAIL', name: name, img: img, price: price};
+}
 
 export function checkLogIn(check) {
 	return { type: 'CHECKLOGIN', check: check};
 }
 
-export function productDetail(name, img, price) {
-	return { type: 'PRODUCTDETAIL', name: name, img: img, price: price};
+export function switchLogin(name) {
+	return { type: 'SWITCHLOGIN', name: name};
 }
