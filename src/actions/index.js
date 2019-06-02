@@ -41,8 +41,8 @@ export function productDetail(name, img, price) {
 	return { type: 'PRODUCTDETAIL', name: name, img: img, price: price};
 }
 
-export function checkLogIn(check) {
-	return { type: 'CHECKLOGIN', check: check};
+export function checkLogIn(status,name,cart) {
+	return { type: 'CHECKLOGIN', name: name,status:status,cart:cart};
 }
 
 export function switchLogin(name) {

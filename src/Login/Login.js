@@ -3,12 +3,14 @@ import './Login.css';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import Home from '../Home/home'
+import { connect } from 'react-redux';
+import { fetchProducts,checkLogIn } from '../actions'
 class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: "",
-            pw: "",
+            name: "",
+            product: [],
             checkLogIn: false,
         }
     }
@@ -44,6 +46,13 @@ class Login extends Component {
                 })
                 if (user.length) {
                     alert("Đăng nhập thành công");
+                    
+                    self.setState({
+                        checkLogIn:true,
+                        name:user[0].name,
+                        product:user[0].product
+                    })
+                    this.props.checkLogIn(self.state.checkLogIn,self.state.name,self.state.product)
                 }
                 else alert("Đăng nhập thất bại");
             })
@@ -111,4 +120,10 @@ class Login extends Component {
         );
     }
 }
-export default Login;
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchProducts: () => dispatch(fetchProducts()),
+        checkLogIn: (status,name,cart) => dispatch(checkLogIn(status,name,cart))
+    }
+}
+export default connect(null, mapDispatchToProps)(Login);

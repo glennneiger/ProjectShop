@@ -3,8 +3,7 @@
 export default function checkLogIn(state = {status: false, name: "", cart: []}, action) {
     switch (action.type) {
         case 'CHECKLOGIN':
-            console.log("action.CHECKLOGIN", action.check);
-            return action.check;
+            return {status: action.status, name: action.name, cart: action.cart};
         default:
             return state;
     }
