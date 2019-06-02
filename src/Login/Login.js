@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import './Login.css';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 import Home from '../Home/home'
-import { connect } from 'react-redux';
-import { fetchProducts,checkLogIn } from '../actions';
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -102,7 +101,7 @@ class Login extends Component {
                     ra còn nhiều chính sách ưu đãi cho thành viên citybike</p>
                             </div>
                             <div>
-                                <button className="singIn">ĐĂNG KÝ</button>
+                                <Link to="/regis" className="signIn">Đăng kí</Link>
                             </div>
                         </div>
                     </div>
@@ -112,11 +111,4 @@ class Login extends Component {
         );
     }
 }
-const mapDispatchToProps = dispatch => {
-  return {
-      fetchProducts: () => dispatch(fetchProducts()),
-      checkLogIn: (check) => dispatch(checkLogIn(check))
-  }
-}
-
-export default connect(null, mapDispatchToProps)(Login);
+export default Login;

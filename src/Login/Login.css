@@ -51,15 +51,14 @@
 }
 
 .Login button {
-    width:150px;
-    height:45px;
-    border-radius:20px;
-    border:1px solid #3fb871;
-    background: #3fb871;
-    color:white;
-    font-size:13px;
+    padding: 15px 30px;
+    background-color: #3fb871;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    cursor: pointer;
     margin-bottom: 100px;
-    cursor:pointer;
 }
 .Login  .para {
     width:480px;
@@ -71,4 +70,14 @@
 .Login .Right p {
     margin-bottom: 25px;
     line-height: 15px;
+}
+.signIn{
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #3fb871;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    cursor: pointer;
 }

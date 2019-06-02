@@ -3,12 +3,11 @@ import './ProductRow.css';
 import image from "../Image/spx2-1.png"
 class ProductRow extends Component {
 
-render() {  
-   
+render() {
     return (
                 <tr className="ProductRow">
                     <td>
-                        <div><img src={image}></img></div>
+                        <div><img src={image} alt="dd"></img></div>
                     </td>
                     <td>Cây văn phòng</td>
                     <td>300.000d</td>
@@ -18,7 +17,6 @@ render() {
                         <i class="fas fa-trash-alt"></i>
                         <i class="fas fa-plus-square"></i>
                     </td>
-                   
                 </tr>
     )
 }

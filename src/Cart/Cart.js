@@ -16,7 +16,6 @@ render() {
                     <td>SỐ LƯỢNG</td>
                     <td>THÀNH TIỀN</td>
                     <td>XÓA</td>
-                   
                 </tr>
             <ProductRow></ProductRow>
             <ProductRow></ProductRow>
@@ -26,7 +25,7 @@ render() {
                 <button >HỦY ĐƠN HÀNG</button>
                 <button className="light" >TIẾP TỤC MUA</button>
             </div>
-            <div className="total"> 
+            <div className="total">
                 <div>
                 <table>
                     <tr>
